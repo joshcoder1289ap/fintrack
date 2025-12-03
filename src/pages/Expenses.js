@@ -362,12 +362,6 @@ const Expenses = () => {
         
         <div className="header-actions">
           <button 
-            className="export-btn"
-            onClick={handleExportData}
-          >
-            <MdDownload /> Export
-          </button>
-          <button 
             className="add-expense-btn"
             onClick={() => navigate('/add-expense')}
           >
@@ -531,17 +525,6 @@ const Expenses = () => {
               </button>
             </div>
           </div>
-          
-          <div className="filter-group">
-            <h4>Category</h4>
-            <select className="category-select">
-              <option value="all">All Categories</option>
-              <option value="food">Food & Dining</option>
-              <option value="housing">Housing</option>
-              <option value="transport">Transportation</option>
-              <option value="entertainment">Entertainment</option>
-            </select>
-          </div>
         </div>
       )}
 
@@ -647,23 +630,6 @@ const Expenses = () => {
           <div className="chart-section">
             <h3>Spending by Category</h3>
             <div className="pie-chart-container">
-              <div className="pie-chart">
-                {categorySpending.map((item, index, array) => {
-                  const startAngle = array.slice(0, index).reduce((sum, i) => sum + i.percentage, 0);
-                  return (
-                    <div 
-                      key={item.category}
-                      className="pie-segment"
-                      style={{
-                        backgroundColor: item.color,
-                        transform: `rotate(${startAngle * 3.6}deg)`,
-                        clipPath: `polygon(50% 50%, 50% 0%, ${50 + Math.cos((item.percentage * 3.6 * Math.PI) / 180) * 50}% ${50 + Math.sin((item.percentage * 3.6 * Math.PI) / 180) * 50}%)`
-                      }}
-                    ></div>
-                  );
-                })}
-              </div>
-              
               <div className="chart-legend">
                 {categorySpending.map(item => (
                   <div key={item.category} className="legend-item">
@@ -674,7 +640,6 @@ const Expenses = () => {
                     <div className="legend-details">
                       <span className="legend-category">{item.category}</span>
                       <span className="legend-amount">{formatCurrency(item.amount)}</span>
-                      <span className="legend-percentage">{item.percentage}%</span>
                     </div>
                   </div>
                 ))}
@@ -768,39 +733,6 @@ const Expenses = () => {
               </div>
             </div>
           </div>
-          
-          {/* Recommendations */}
-          <div className="recommendations">
-            <h4>Personalized Recommendations</h4>
-            <div className="recommendations-list">
-              <div className="recommendation">
-                <div className="rec-icon">💡</div>
-                <div className="rec-content">
-                  <h5>Set up automatic savings</h5>
-                  <p>Save 10% of each income automatically</p>
-                </div>
-                <button className="rec-action">Set Up</button>
-              </div>
-              
-              <div className="recommendation">
-                <div className="rec-icon">📊</div>
-                <div className="rec-content">
-                  <h5>Review subscription services</h5>
-                  <p>Cancel unused subscriptions</p>
-                </div>
-                <button className="rec-action">Review</button>
-              </div>
-              
-              <div className="recommendation">
-                <div className="rec-icon">🎯</div>
-                <div className="rec-content">
-                  <h5>Create emergency fund</h5>
-                  <p>Aim for 3 months of expenses</p>
-                </div>
-                <button className="rec-action">Start</button>
-              </div>
-            </div>
-          </div>
         </div>
       )}
 
@@ -809,12 +741,6 @@ const Expenses = () => {
         <button className="nav-card" onClick={() => navigate('/budget')}>
           <MdPieChart />
           <span>Budget Planning</span>
-          <MdArrowForward />
-        </button>
-        
-        <button className="nav-card" onClick={() => navigate('/reports')}>
-          <MdTrendingUp />
-          <span>Detailed Reports</span>
           <MdArrowForward />
         </button>
         

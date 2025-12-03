@@ -7,7 +7,6 @@ const Navbar = () => {
     { path: '/', name: 'Dashboard', icon: <MdDashboard /> },
     { path: '/expenses', name: 'Expenses', icon: <MdReceipt /> },
     { path: '/budget', name: 'Budget', icon: <MdPieChart /> },
-    { path: '/reports', name: 'Reports', icon: <MdTrendingUp /> },
   ];
 
   return (

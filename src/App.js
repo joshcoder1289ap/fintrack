@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Expenses from './pages/Expenses';
 import Budget from './pages/Budget';
-import Reports from './pages/Reports';
 import Success from './pages/Success';
 import AddExpense from './pages/AddExpense';
 import './styles/App.css';
@@ -18,7 +17,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/expenses" element={<Expenses />} />
           <Route path="/budget" element={<Budget />} />
-          <Route path="/reports" element={<Reports />} />
           <Route path="/success" element={<Success />} />
           <Route path="/add-expense" element={<AddExpense />} />
         </Routes>
